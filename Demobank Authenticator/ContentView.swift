@@ -9,8 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @EnvironmentObject var authenticationController: AuthenticationController
+
     var body: some View {
-        Text("Hello, World!")
+        Text(authenticationController.errorMessage ?? "")
     }
 }
 
