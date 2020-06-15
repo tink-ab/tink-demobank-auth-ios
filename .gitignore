@@ -1,0 +1,10 @@
+.DS_Store
+.build/
+xcuserdata/
+IDEWorkspaceChecks.plist
+Carthage/
+Pods/
+*.xcworkspace
+GRPC/plugins/
+.swiftpm/
+fastlane/report.xml
