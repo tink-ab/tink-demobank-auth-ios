@@ -4,7 +4,6 @@ import Combine
 final class DemobankService {
 
     private let urlSession: URLSession = .shared
-
     private let decoder = JSONDecoder()
     private let baseUrl = URL(string: "https://demobank.production.global.tink.se/api")!
 

@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             guard context.url.scheme == "tink-demobank-auth", context.url.host == "auth", context.url.pathComponents.first == "/", context.url.pathComponents.count == 2 else {
                 continue
             }
-            authenticationController.fetchTicket(context.url.lastPathComponent)
+            authenticationController.startAuthenticationFlow(with: context.url.lastPathComponent)
             break
         }
     }

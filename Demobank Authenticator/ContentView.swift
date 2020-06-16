@@ -5,7 +5,12 @@ struct ContentView: View {
     @EnvironmentObject var authenticationController: AuthenticationController
 
     var body: some View {
-        Text(authenticationController.errorMessage ?? "")
+        ZStack {
+            Text("Demobank").blur(radius: self.authenticationController.authenticationTask == nil ? 0 : 3)
+            authenticationController.authenticationTask.map { AuthenticationRequestView(authenticationTask: $0) }
+        }.onAppear {
+            self.authenticationController.startAuthenticationFlow(with: "1234")
+        }
     }
 }
 
