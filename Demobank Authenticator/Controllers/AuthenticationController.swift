@@ -46,7 +46,7 @@ final class AuthenticationTask: ObservableObject {
         self.isLoading = isLoading
         self.completeMessage = completeMessage
     }
-    
+
     func startAuthenticationFlow() {
         self.isLoading = true
         cancellable = demobankService.fetchTicket(token).delay(for: 3.0, scheduler: DispatchQueue.main).sink(receiveCompletion: { [weak self] completion in
@@ -57,7 +57,7 @@ final class AuthenticationTask: ObservableObject {
             case .failure:
                 self?.errorMessage = "An error occurred."
             case.finished:
-                self?.errorMessage = ""
+                self?.errorMessage = nil
             }
         }, receiveValue: { ticket in
             self.ticket = ticket
@@ -75,10 +75,11 @@ final class AuthenticationTask: ObservableObject {
             case .failure:
                 self?.errorMessage = "An error occurred."
             case.finished:
-                self?.errorMessage = ""
+                self?.errorMessage = nil
             }
             }, receiveValue: { message in
                 self.completeMessage = message
+                self.handleCompleteMessage(message)
         })
     }
 
@@ -92,10 +93,11 @@ final class AuthenticationTask: ObservableObject {
             case .failure:
                 self?.errorMessage = "An error occurred."
             case.finished:
-                self?.errorMessage = ""
+                self?.errorMessage = nil
             }
             }, receiveValue: { message in
                 self.completeMessage = message
+                self.handleCompleteMessage(message)
         })
     }
 

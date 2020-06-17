@@ -68,12 +68,11 @@
 		9D95D96C24976612003E00FF /* Demobank Authenticator */ = {
 			isa = PBXGroup;
 			children = (
+				9DEEACBF249A0B320020C32B /* Views */,
 				9D95D98B2497A5E6003E00FF /* Controllers */,
 				9D95D9812497664F003E00FF /* Networking */,
 				9D95D96D24976612003E00FF /* AppDelegate.swift */,
 				9D95D96F24976612003E00FF /* SceneDelegate.swift */,
-				9D95D97124976612003E00FF /* ContentView.swift */,
-				9D95D98E2497B285003E00FF /* AuthenticationRequestView.swift */,
 				9D95D97324976614003E00FF /* Assets.xcassets */,
 				9D95D97824976614003E00FF /* LaunchScreen.storyboard */,
 				9D95D97B24976614003E00FF /* Info.plist */,
@@ -115,6 +114,15 @@
 				9D95D98724977028003E00FF /* AuthenticationController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9DEEACBF249A0B320020C32B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D95D98E2497B285003E00FF /* AuthenticationRequestView.swift */,
+				9D95D97124976612003E00FF /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

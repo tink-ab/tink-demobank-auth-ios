@@ -13,12 +13,14 @@ final class DemobankService {
     }
 
     func cancelTicket(_ ticket: String) -> AnyPublisher<CompleteMessage, Error> {
-        let urlRequest = URLRequest(url: baseUrl.appendingPathComponent("auth/ticket/\(ticket)/cancel"))
+        var urlRequest = URLRequest(url: baseUrl.appendingPathComponent("auth/ticket/\(ticket)/cancel"))
+        urlRequest.httpMethod = "POST"
         return performRequest(urlRequest: urlRequest)
     }
 
     func confirmTicket(_ ticket: String) -> AnyPublisher<CompleteMessage, Error> {
-        let urlRequest = URLRequest(url: baseUrl.appendingPathComponent("auth/ticket/\(ticket)/confirm"))
+        var urlRequest = URLRequest(url: baseUrl.appendingPathComponent("auth/ticket/\(ticket)/confirm"))
+        urlRequest.httpMethod = "POST"
         return performRequest(urlRequest: urlRequest)
     }
 
