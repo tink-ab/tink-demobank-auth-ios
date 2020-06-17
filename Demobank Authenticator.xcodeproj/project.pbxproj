@@ -19,6 +19,8 @@
 		9D95D98A24977A00003E00FF /* DemobankError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95D98924977A00003E00FF /* DemobankError.swift */; };
 		9D95D98D2497A663003E00FF /* CompleteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95D98C2497A663003E00FF /* CompleteMessage.swift */; };
 		9D95D98F2497B285003E00FF /* AuthenticationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95D98E2497B285003E00FF /* AuthenticationRequestView.swift */; };
+		9DEEACC1249A53120020C32B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEEACC0249A53120020C32B /* ActivityIndicator.swift */; };
+		9DEEACC3249A55EA0020C32B /* TinkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEEACC2249A55EA0020C32B /* TinkButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		9D95D98924977A00003E00FF /* DemobankError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemobankError.swift; sourceTree = "<group>"; };
 		9D95D98C2497A663003E00FF /* CompleteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteMessage.swift; sourceTree = "<group>"; };
 		9D95D98E2497B285003E00FF /* AuthenticationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRequestView.swift; sourceTree = "<group>"; };
+		9DEEACC0249A53120020C32B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		9DEEACC2249A55EA0020C32B /* TinkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 			children = (
 				9D95D98E2497B285003E00FF /* AuthenticationRequestView.swift */,
 				9D95D97124976612003E00FF /* ContentView.swift */,
+				9DEEACC0249A53120020C32B /* ActivityIndicator.swift */,
+				9DEEACC2249A55EA0020C32B /* TinkButtonStyle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,9 +208,11 @@
 				9D95D98F2497B285003E00FF /* AuthenticationRequestView.swift in Sources */,
 				9D95D98A24977A00003E00FF /* DemobankError.swift in Sources */,
 				9D95D98824977028003E00FF /* AuthenticationController.swift in Sources */,
+				9DEEACC1249A53120020C32B /* ActivityIndicator.swift in Sources */,
 				9D95D98324976678003E00FF /* DemobankService.swift in Sources */,
 				9D95D98D2497A663003E00FF /* CompleteMessage.swift in Sources */,
 				9D95D97224976612003E00FF /* ContentView.swift in Sources */,
+				9DEEACC3249A55EA0020C32B /* TinkButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

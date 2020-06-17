@@ -49,7 +49,7 @@ final class AuthenticationTask: ObservableObject {
 
     func startAuthenticationFlow() {
         self.isLoading = true
-        cancellable = demobankService.fetchTicket(token).delay(for: 3.0, scheduler: DispatchQueue.main).sink(receiveCompletion: { [weak self] completion in
+        cancellable = demobankService.fetchTicket(token).sink(receiveCompletion: { [weak self] completion in
             self?.isLoading = false
             switch completion {
             case .failure(let error as DemobankError):
