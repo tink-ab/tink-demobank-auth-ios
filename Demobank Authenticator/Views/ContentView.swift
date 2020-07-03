@@ -19,7 +19,7 @@ struct ContentView: View {
                 Text("Waiting for authentication request...").font(.footnote)
                 Spacer()
 
-            }
+            }.foregroundColor(Color.black)
             .blur(radius: self.authenticationController.authenticationTask == nil ? 0 : 3)
             
             if authenticationController.authenticationTask != nil {

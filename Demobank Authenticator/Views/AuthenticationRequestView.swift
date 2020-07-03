@@ -35,7 +35,7 @@ struct AuthenticationRequestView: View {
                     }.offset(y: 8)
                 }
             }
-        }
+        }.foregroundColor(Color.black)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
         .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
         .background(Color.white)
