@@ -22,6 +22,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+
+        for context in connectionOptions.urlContexts {
+            guard context.url.scheme == "tink-demobank-auth", context.url.host == "auth", context.url.pathComponents.first == "/", context.url.pathComponents.count == 2 else {
+                continue
+            }
+            authenticationController.startAuthenticationFlow(with: context.url.lastPathComponent)
+            break
+        }
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
