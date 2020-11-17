@@ -86,6 +86,11 @@ final class AuthenticationTask {
         })
     }
 
+    func reset() {
+        cancellable?.cancel()
+        currentTicket = nil
+        state.value = .idle
+    }
     private func handleCompleteMessage(_ message: CompleteMessage) {
         if let url = message.url {
             if let delay = message.delay {

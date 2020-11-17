@@ -7,8 +7,11 @@ struct AuthenticationView: View {
     var body: some View {
         ZStack {
             BackgroundView().edgesIgnoringSafeArea(.all)
-
             VStack(spacing: 22) {
+                HStack {
+                    Spacer()
+                    Image("tink").renderingMode(.template).foregroundColor(.background).padding([.trailing, .top], 20)
+                }.padding(.bottom, 140)
                 TinkDemoLogo().frame(width: 80, height: 80)
                 Text("Tink Demo Bank")
                     .bold()
@@ -16,12 +19,13 @@ struct AuthenticationView: View {
                     .foregroundColor(Color.buttonLabel)
                 Text(viewModel.statusText)
                     .font(.system(size: 15))
+                    .multilineTextAlignment(.center)
                     .foregroundColor(Color.buttonLabel)
+                    .padding([.trailing, .leading], 20)
 
                 if viewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .background))
-                        .foregroundColor(.buttonLabel)
+                    TinkActivityIndicator(isLoading: true).frame(width: 40, height: 40)
+                        .accentColor(.buttonLabel)
                         .padding(.top, 50)
                 }
                 Spacer()
@@ -41,7 +45,7 @@ struct AuthenticationView: View {
                         .foregroundColor(.button)
                         .padding()
                 }
-            }.padding(.top, 140)
+            }
         }.onOpenURL(perform: { url in
             guard url.scheme == "tink-demobank-auth", url.host == "auth", url.pathComponents.first == "/", url.pathComponents.count == 2 else {
                 return
@@ -54,10 +58,10 @@ struct AuthenticationView: View {
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AuthenticationView(viewModel: AuthenticationView.ViewModel(statusText: "Test", primaryButton: .init(title: "Title", action: { } ), secondaryButton: .init(title: "Secondary", action: { })))
+            AuthenticationView(viewModel: AuthenticationView.ViewModel(statusText: "You are attempting to login to Demobank as user u08527362.", primaryButton: .init(title: "Title", action: { } ), secondaryButton: .init(title: "Secondary", action: { })))
                 .previewDevice("iPhone 12 Pro Max")
 
-            AuthenticationView(viewModel: AuthenticationView.ViewModel(statusText: "Test", primaryButton: .init(title: "Title", action: { } ), secondaryButton: .init(title: "Secondary", action: { })))
+            AuthenticationView(viewModel: AuthenticationView.ViewModel(statusText: "This is an example status text.", primaryButton: .init(title: "Title", action: { } ), secondaryButton: .init(title: "Secondary", action: { })))
                 .previewDevice("iPhone 12 mini")
 
             AuthenticationView()

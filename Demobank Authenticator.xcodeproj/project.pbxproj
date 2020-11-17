@@ -21,6 +21,7 @@
 		9D95D98824977028003E00FF /* AuthenticationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95D98724977028003E00FF /* AuthenticationTask.swift */; };
 		9D95D98A24977A00003E00FF /* DemobankError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95D98924977A00003E00FF /* DemobankError.swift */; };
 		9D95D98D2497A663003E00FF /* CompleteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95D98C2497A663003E00FF /* CompleteMessage.swift */; };
+		9DCE948E2563D40800E1AE8E /* TinkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE948D2563D40800E1AE8E /* TinkActivityIndicator.swift */; };
 		9DEEACC3249A55EA0020C32B /* TinkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEEACC2249A55EA0020C32B /* TinkButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		9D95D98724977028003E00FF /* AuthenticationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTask.swift; sourceTree = "<group>"; };
 		9D95D98924977A00003E00FF /* DemobankError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemobankError.swift; sourceTree = "<group>"; };
 		9D95D98C2497A663003E00FF /* CompleteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteMessage.swift; sourceTree = "<group>"; };
+		9DCE948D2563D40800E1AE8E /* TinkActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkActivityIndicator.swift; sourceTree = "<group>"; };
 		9DEEACC2249A55EA0020C32B /* TinkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 				9D036CFD256283C500B68A46 /* TinkDemoLogo.swift */,
 				9D036D082562BDC300B68A46 /* AuthenticationViewModel.swift */,
 				9D036D0B2562BDCB00B68A46 /* AuthenticationView.swift */,
+				9DCE948D2563D40800E1AE8E /* TinkActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				9D95D98824977028003E00FF /* AuthenticationTask.swift in Sources */,
 				9D036CFB25627E3700B68A46 /* Color.swift in Sources */,
 				9D95D98324976678003E00FF /* DemobankService.swift in Sources */,
+				9DCE948E2563D40800E1AE8E /* TinkActivityIndicator.swift in Sources */,
 				9D95D98D2497A663003E00FF /* CompleteMessage.swift in Sources */,
 				9D036D0C2562BDCB00B68A46 /* AuthenticationView.swift in Sources */,
 				9DEEACC3249A55EA0020C32B /* TinkButtonStyle.swift in Sources */,

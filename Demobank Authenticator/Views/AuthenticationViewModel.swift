@@ -22,10 +22,11 @@ extension AuthenticationView {
             }
         }
 
-        init(statusText: String, primaryButton: Button?, secondaryButton: Button?) {
+        init(statusText: String, primaryButton: Button?, secondaryButton: Button?, isLoading: Bool = false) {
             self.statusText = statusText
             self.primaryButton = primaryButton
             self.secondaryButton = secondaryButton
+            self.isLoading = isLoading
         }
         
         func start(with ticket: String) {
