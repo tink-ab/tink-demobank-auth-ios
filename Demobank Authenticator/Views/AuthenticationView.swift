@@ -6,7 +6,7 @@ struct AuthenticationView: View {
 
     var body: some View {
         ZStack {
-            BackgroundView().edgesIgnoringSafeArea(.all)
+            BackgroundView(color: viewModel.color).edgesIgnoringSafeArea(.all)
             VStack(spacing: 22) {
                 HStack {
                     Spacer()
@@ -62,6 +62,9 @@ struct AuthenticationView_Previews: PreviewProvider {
                 .previewDevice("iPhone 12 Pro Max")
 
             AuthenticationView(viewModel: AuthenticationView.ViewModel(statusText: "This is an example status text.", primaryButton: .init(title: "Title", action: { } ), secondaryButton: .init(title: "Secondary", action: { })))
+                .previewDevice("iPhone 12 mini")
+
+            AuthenticationView(viewModel: AuthenticationView.ViewModel(statusText: "Error.", primaryButton: nil, secondaryButton: nil, color: .leftToSpend))
                 .previewDevice("iPhone 12 mini")
 
             AuthenticationView()

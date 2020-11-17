@@ -1,4 +1,5 @@
 import Combine
+import SwiftUI
 
 extension AuthenticationView {
     final class ViewModel: ObservableObject {
@@ -11,6 +12,7 @@ extension AuthenticationView {
         @Published var secondaryButton: Button?
         @Published var statusText: String = ""
         @Published var isLoading = false
+        @Published var color: Color = .button
 
         private let authenticationTask = AuthenticationTask()
 
@@ -22,11 +24,12 @@ extension AuthenticationView {
             }
         }
 
-        init(statusText: String, primaryButton: Button?, secondaryButton: Button?, isLoading: Bool = false) {
+        init(statusText: String, primaryButton: Button?, secondaryButton: Button?, isLoading: Bool = false, color: Color = .button) {
             self.statusText = statusText
             self.primaryButton = primaryButton
             self.secondaryButton = secondaryButton
             self.isLoading = isLoading
+            self.color = color
         }
         
         func start(with ticket: String) {
@@ -40,17 +43,29 @@ extension AuthenticationView {
                 primaryButton = nil
                 secondaryButton = Button(title: "Read more about Tink Demo Bank", action: { })
                 isLoading = false
+                color = .button
+
             case .loading:
                 statusText = "Loading"
                 isLoading = true
+                color = .button
+
             case .error(let error):
                 statusText = error?.message ?? "An unknown error occurred"
                 isLoading = false
+                primaryButton = Button(title: "OK", action: { [weak task = authenticationTask] in
+                    task?.reset()
+                })
+                secondaryButton = nil
+                color = .leftToSpend
+
             case .complete(let complete):
                 statusText = complete.message
                 primaryButton = nil
                 secondaryButton = nil
                 isLoading = true
+                color = .button
+
             case .ticket(let ticket):
                 statusText = ticket.message
                 primaryButton = Button(title: ticket.confirmButtonText, action: { [weak task = authenticationTask] in
@@ -60,6 +75,7 @@ extension AuthenticationView {
                     task?.cancelTicket()
                 })
                 isLoading = false
+                color = .button
             }
         }
     }
