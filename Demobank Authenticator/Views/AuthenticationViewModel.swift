@@ -51,7 +51,7 @@ extension AuthenticationView {
                 color = .button
                 primaryButton = nil 
                 secondaryButton = nil
-                
+
             case .error(let error):
                 statusText = error?.message ?? "An unknown error occurred"
                 isLoading = false
