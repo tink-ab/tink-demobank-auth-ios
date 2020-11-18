@@ -41,7 +41,7 @@ extension AuthenticationView {
             case .idle:
                 statusText = "Waiting for authentication request..."
                 primaryButton = nil
-                secondaryButton = Button(title: "Read more about Tink Demo Bank", action: { })
+                secondaryButton = nil
                 isLoading = false
                 color = .button
 
@@ -49,7 +49,9 @@ extension AuthenticationView {
                 statusText = "Loading"
                 isLoading = true
                 color = .button
-
+                primaryButton = nil 
+                secondaryButton = nil
+                
             case .error(let error):
                 statusText = error?.message ?? "An unknown error occurred"
                 isLoading = false
