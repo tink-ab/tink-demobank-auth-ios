@@ -19,7 +19,7 @@ extension AuthenticationView {
         private var cancellable: Cancellable?
 
         init() {
-            cancellable = authenticationTask.state.sink { [weak self] state in
+            cancellable = authenticationTask.$state.sink { [weak self] state in
                 self?.update(state: state)
             }
         }

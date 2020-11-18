@@ -12,7 +12,7 @@ final class AuthenticationTask {
         case complete(CompleteMessage)
     }
 
-    private(set) var state: CurrentValueSubject<State, Never> 
+    @Published private(set) var state: State
 
     private let demobankService = DemobankService()
     private var cancellable: Cancellable?
@@ -20,32 +20,32 @@ final class AuthenticationTask {
     var currentTicket: String?
 
     init() {
-        self.state = .init(.idle)
+        self.state = .idle
     }
 
     init(state: State) {
-        self.state = .init(state)
+        self.state = state
     }
 
     func startAuthenticationFlow(ticket: String) {
         currentTicket = ticket
-        state.value = .loading
+        state = .loading
         cancellable = demobankService.fetchTicket(ticket).sink(receiveCompletion: { [weak self] completion in
             switch completion {
             case .failure(let error as DemobankError):
-                self?.state.value = .error(error)
+                self?.state = .error(error)
             case .failure:
-                self?.state.value = .error(nil)
+                self?.state = .error(nil)
             case.finished:
                 break
             }
         }, receiveValue: { ticket in
-            self.state.value = .ticket(ticket)
+            self.state = .ticket(ticket)
         })
     }
 
     func confirmTicket() {
-        state.value = .loading
+        state = .loading
         guard let ticket = currentTicket else {
             fatalError()
         }
@@ -53,20 +53,20 @@ final class AuthenticationTask {
         cancellable = demobankService.confirmTicket(ticket).sink(receiveCompletion: { [weak self] completion in
             switch completion {
             case .failure(let error as DemobankError):
-                self?.state.value = .error(error)
+                self?.state = .error(error)
             case .failure:
-                self?.state.value = .error(nil)
+                self?.state = .error(nil)
             case.finished:
                 break
             }
             }, receiveValue: { message in
-                self.state.value = .complete(message)
+                self.state = .complete(message)
                 self.handleCompleteMessage(message)
         })
     }
 
     func cancelTicket() {
-        state.value = .loading
+        state = .loading
         guard let ticket = currentTicket else {
             fatalError()
         }
@@ -74,14 +74,14 @@ final class AuthenticationTask {
 
             switch completion {
             case .failure(let error as DemobankError):
-                self?.state.value = .error(error)
+                self?.state = .error(error)
             case .failure:
-                self?.state.value = .error(nil)
+                self?.state = .error(nil)
             case.finished:
                 break
             }
             }, receiveValue: { message in
-                self.state.value = .complete(message)
+                self.state = .complete(message)
                 self.handleCompleteMessage(message)
         })
     }
@@ -89,19 +89,19 @@ final class AuthenticationTask {
     func reset() {
         cancellable?.cancel()
         currentTicket = nil
-        state.value = .idle
+        state = .idle
     }
     private func handleCompleteMessage(_ message: CompleteMessage) {
         if let url = message.url {
             if let delay = message.delay {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
                     self.currentTicket = nil
-                    self.state.value = .idle
+                    self.state = .idle
                     UIApplication.shared.open(url)
                 }
             } else {
                 self.currentTicket = nil
-                self.state.value = .idle
+                self.state = .idle
                 UIApplication.shared.open(url)
             }
         }
