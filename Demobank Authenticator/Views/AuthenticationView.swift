@@ -6,42 +6,41 @@ struct AuthenticationView: View {
 
     var body: some View {
         GeometryReader { geometry in
-        VStack(spacing: 22) {
-            HeaderView(color: viewModel.color, text: viewModel.statusText)
-                .frame(maxWidth: .infinity, idealHeight: geometry.size.height * 0.70, maxHeight: geometry.size.height * 0.70)
-            if viewModel.isLoading {
-                TinkActivityIndicator(isLoading: true).frame(width: 40, height: 40)
-                    .accentColor(.buttonLabel)
-                    .padding(.top, 50)
-            }
-            Spacer()
-            if let button = viewModel.primaryButton {
-                Button(action: button.action, label: {
-                    Text(button.title)
-                        .fontWeight(.bold)
-                        .font(.system(size: 15))
-                })
-                    .buttonStyle(TinkButtonStyle(foreground: Color.buttonLabel, background: Color.button))
-            }
-            if let button = viewModel.secondaryButton {
-                Button(action: button.action, label: {
-                    Text(button.title)
-                        .fontWeight(.bold)
-                        .font(.system(size: 15))
-                })
-                    .foregroundColor(.button)
-                    .padding()
-            }
-        }
-            .frame(maxWidth: .infinity)
-            .overlay(
-                Image("tink").renderingMode(.template).foregroundColor(.background).padding([.trailing, .top], 20), alignment: .topTrailing)
-            .onOpenURL(perform: { url in
-                guard url.scheme == "tink-demobank-auth", url.host == "auth", url.pathComponents.first == "/", url.pathComponents.count == 2 else {
-                    return
+            VStack(spacing: 22) {
+                HeaderView(color: viewModel.color, text: viewModel.statusText)
+                    .frame(maxWidth: .infinity, idealHeight: geometry.size.height * 0.70, maxHeight: geometry.size.height * 0.70)
+                if viewModel.isLoading {
+                    TinkActivityIndicator(isLoading: true).frame(width: 40, height: 40)
+                        .accentColor(.buttonLabel)
+                        .padding(.top, 50)
                 }
-                self.viewModel.start(with: url.lastPathComponent)
-            })
+                Spacer()
+                if let button = viewModel.primaryButton {
+                    Button(action: button.action, label: {
+                        Text(button.title)
+                            .fontWeight(.bold)
+                            .font(.system(size: 15))
+                    })
+                        .buttonStyle(TinkButtonStyle(foreground: Color.buttonLabel, background: Color.button))
+                }
+                if let button = viewModel.secondaryButton {
+                    Button(action: button.action, label: {
+                        Text(button.title)
+                            .fontWeight(.bold)
+                            .font(.system(size: 15))
+                    })
+                        .foregroundColor(.button)
+                        .padding()
+                }
+            }
+                .overlay(
+                    Image("tink").renderingMode(.template).foregroundColor(.background).padding([.trailing, .top], 20), alignment: .topTrailing)
+                .onOpenURL(perform: { url in
+                    guard url.scheme == "tink-demobank-auth", url.host == "auth", url.pathComponents.first == "/", url.pathComponents.count == 2 else {
+                        return
+                    }
+                    self.viewModel.start(with: url.lastPathComponent)
+                })
             .background(Color.background.edgesIgnoringSafeArea(.all))
         }
     }
