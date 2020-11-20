@@ -7,14 +7,12 @@ struct AuthenticationView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 22) {
-                HeaderView(color: viewModel.color, text: viewModel.statusText)
+                HeaderView(text: viewModel.statusText)
                     .frame(maxWidth: .infinity, idealHeight: geometry.size.height * 0.70, maxHeight: geometry.size.height * 0.70)
-                if viewModel.isLoading {
-                    TinkActivityIndicator(isLoading: true).frame(width: 40, height: 40)
-                        .accentColor(.buttonLabel)
-                        .padding(.top, 50)
-                }
+                    .background(BackgroundShape().foregroundColor(viewModel.color).edgesIgnoringSafeArea(.all))
+                    .overlay(TinkActivityIndicator(isLoading: viewModel.isLoading).frame(width: 40, height: 40).accentColor(.buttonLabel).padding(.bottom, 50), alignment: .bottom)
                 Spacer()
+
                 if let button = viewModel.primaryButton {
                     Button(action: button.action, label: {
                         Text(button.title)
@@ -23,6 +21,7 @@ struct AuthenticationView: View {
                     })
                         .buttonStyle(TinkButtonStyle(foreground: Color.buttonLabel, background: Color.button))
                 }
+
                 if let button = viewModel.secondaryButton {
                     Button(action: button.action, label: {
                         Text(button.title)
