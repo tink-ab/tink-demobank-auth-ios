@@ -7,7 +7,6 @@ The exact `providerName` of providers that simulate this flow are in the format 
 
 ## Requirements 
 - [Xcode 12](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-- A Mac 
 
 ## Installation
 
