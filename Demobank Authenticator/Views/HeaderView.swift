@@ -6,8 +6,6 @@ struct HeaderView: View {
     let text: String
     
     var body: some View {
-        ZStack {
-            BackgroundShape().foregroundColor(color).edgesIgnoringSafeArea(.all)
             VStack(spacing: 22) {
                 Spacer()
                 TinkDemoLogo().frame(width: 80, height: 80)
@@ -23,7 +21,8 @@ struct HeaderView: View {
                     .frame(minHeight: 130, alignment: .top)
                 Spacer()
             }
-        }
+            .frame(maxWidth: .infinity)
+            .background(BackgroundShape().foregroundColor(color).edgesIgnoringSafeArea(.all))
     }
 }
 
