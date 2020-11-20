@@ -20,6 +20,7 @@ struct HeaderView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.buttonLabel)
                     .padding([.trailing, .leading], 20)
+                    .frame(minHeight: 130, alignment: .top)
                 Spacer()
             }
         }
@@ -28,6 +29,10 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(color: .button, text: "TEST")
+        Group {
+            HeaderView(color: .button, text: "TEST")
+
+            HeaderView(color: .button, text: "A longer text.\n\nThis one have multiple lines even.\n\n Amazing.")
+        }
     }
 }
