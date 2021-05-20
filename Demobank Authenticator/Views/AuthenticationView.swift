@@ -19,7 +19,7 @@ struct AuthenticationView: View {
                             .fontWeight(.bold)
                             .font(.system(size: 15))
                     })
-                        .buttonStyle(TinkButtonStyle(foreground: Color.buttonLabel, background: Color.button))
+                    .buttonStyle(TinkButtonStyle(foreground: Color.buttonLabel, background: Color.button))
                 }
 
                 if let button = viewModel.secondaryButton {
@@ -28,12 +28,12 @@ struct AuthenticationView: View {
                             .fontWeight(.bold)
                             .font(.system(size: 15))
                     })
-                        .foregroundColor(.button)
-                        .padding()
+                    .foregroundColor(.button)
+                    .padding()
                 }
             }
-                .overlay(
-                    Image("tink").renderingMode(.template).foregroundColor(.background).padding([.trailing, .top], 20), alignment: .topTrailing)
+            .overlay(
+                Image("tink").renderingMode(.template).foregroundColor(.background).padding([.trailing, .top], 20), alignment: .topTrailing)
             .onOpenURL(perform: { url in
                 if url.scheme == "https", url.host == "demobank.production.global.tink.se", url.pathComponents.first == "/", url.pathComponents.count == 3 {
                     // Universal link
