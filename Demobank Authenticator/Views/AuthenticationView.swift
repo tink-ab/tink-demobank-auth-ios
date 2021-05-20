@@ -35,7 +35,7 @@ struct AuthenticationView: View {
                 .overlay(
                     Image("tink").renderingMode(.template).foregroundColor(.background).padding([.trailing, .top], 20), alignment: .topTrailing)
                 .onOpenURL(perform: { url in
-                    guard url.scheme == "tink-demobank-auth", url.host == "auth", url.pathComponents.first == "/", url.pathComponents.count == 2 else {
+                    guard url.scheme == "https", url.host == "demobank.production.global.tink.se", url.pathComponents.first == "/", url.pathComponents.count == 3 else {
                         return
                     }
                     self.viewModel.start(with: url.lastPathComponent)
