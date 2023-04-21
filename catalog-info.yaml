@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tink-demobank-auth-ios
+  description: Tink Demo Bank Authenticator iOS App
+  tags: []
+  annotations:
+    github.com/project-slug: tink-ab/tink-demobank-auth-ios
+  links: []
+spec:
+  owner: ios
+  type: library
+  lifecycle: production
